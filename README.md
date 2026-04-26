@@ -2,6 +2,8 @@
 
 Connect AI agents and coding IDEs like ChatGPT, Claude, Gemini, Cursor, VS Code, Windsurf, Antigravity, Cline, and other MCP clients directly to Indian financial news analysis.
 
+Use it as an AI trading signals India API inside MCP-compatible workflows.
+
 # What it does
 
 - Exposes a single tool: `analyze_headline`
