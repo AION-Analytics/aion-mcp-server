@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from typing import Any
 
-from aion_news_to_signal import analyze
+from aion_indian_market_intelligence import analyze
 from mcp.server.fastmcp import FastMCP
 
 
