@@ -70,8 +70,8 @@ Analyze this Indian financial headline using AION Indian Market Intelligence for
 
 # Links
 
-- Base model surface: [AION Indian Market Intelligence for Macro Event & Sector Impact Analysis](https://huggingface.co/AION-Analytics/aion-news-to-signal)
+- Base model surface: [AION Indian Market Intelligence for Macro Event & Sector Impact Analysis](https://huggingface.co/AION-Analytics/aion-indian-market-intelligence)
 - PyPI: [aion-indian-market-intelligence](https://pypi.org/project/aion-indian-market-intelligence/)
-- Live demo: [HuggingFace Space](https://huggingface.co/spaces/AION-Analytics/aion-news-to-signal)
+- Live demo: [HuggingFace Space](https://huggingface.co/spaces/AION-Analytics/aion-indian-market-intelligence)
 - API access page: [dashboard.aiondashboard.site/access/register](https://dashboard.aiondashboard.site/access/register)
 - Documentation and MCP integration: [dashboard.aiondashboard.site/models/indian-market-intelligence](https://dashboard.aiondashboard.site/models/indian-market-intelligence)
