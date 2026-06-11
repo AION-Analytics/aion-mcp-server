@@ -1,135 +1,70 @@
 # AION Indian Market Intelligence MCP Server
 
-MCP-compatible Indian market intelligence server for macro event analysis and
-sector impact analysis.
+Macro-event and sector impact intelligence for Indian financial markets.
 
-This repository documents the MCP server for **AION Indian Market Intelligence
-for Macro Event & Sector Impact Analysis**.
+Connect AI agents and coding IDEs like ChatGPT, Claude, Gemini, Cursor, VS Code, Windsurf, Antigravity, Cline, and other MCP clients directly to Indian financial event intelligence.
 
-## Important Package Boundary
+Use it as an MCP-compatible Indian market intelligence server inside agent and IDE workflows.
 
-This is **not** an npm package.
+# What it does
 
-Do **not** use `@aion-sdk/mcp-server` for AION Indian Market Intelligence.
-That npm package is an unrelated Solana wallet/payments MCP server owned by a
-different namespace.
+- Exposes a single tool: `analyze_news`
+- Given a headline like `"RBI hikes repo rate by 25 bps"`
+- Returns only the `sector_vector`
+- Helps answer which sectors are exposed, pressured, or relatively supported
+- Requires API key configuration through `AION_API_KEY`
+- Enforces quota through the managed API
+- Does not execute trades or generate executable orders
 
-The official AION Indian Market Intelligence MCP server is distributed through
-PyPI as part of:
+# Installation
 
-```bash
-aion-indian-market-intelligence
-```
-
-The executable MCP entrypoint is:
-
-```bash
-aion-indian-market-intelligence-mcp
-```
-
-## Install
-
-Recommended one-shot MCP launch:
+Run directly with `uvx`:
 
 ```bash
 uvx aion-indian-market-intelligence-mcp
 ```
 
-Python package install:
+Or install the dedicated MCP package:
 
 ```bash
-pip install aion-indian-market-intelligence
+pip install aion-indian-market-intelligence-mcp
 ```
 
-## Claude Desktop Config
+# Usage
 
-```json
-{
-  "mcpServers": {
-    "aion-indian-market-intelligence": {
-      "command": "uvx",
-      "args": ["aion-indian-market-intelligence-mcp"],
-      "env": {
-        "AION_API_KEY": "YOUR_AION_API_KEY"
-      }
-    }
-  }
-}
+```bash
+aion-indian-market-intelligence-mcp
 ```
 
-## What It Does
+Environment:
 
-The MCP server exposes a request-driven tool for Indian market intelligence.
+```bash
+export AION_API_KEY="<your_api_key>"
+```
 
-Given one Indian financial headline, it calls the managed AION API and returns
-structured JSON centered on `sector_vector`.
-
-It supports:
-
-- macro event analysis
-- sector impact analysis
-- policy impact analysis
-- sector exposure intelligence
-- event-driven market intelligence
-- MCP-compatible agent workflows
-
-It does not ingest news automatically, monitor markets on its own, place
-orders, connect to brokers, or provide personalized investment advice.
-
-## Tool
-
-The promoted MCP tool is:
+Then connect your LLM client or IDE to the MCP server and ask:
 
 ```text
-analyze_news
+Analyze this Indian financial headline using AION Indian Market Intelligence and return the sector_vector only: <headline>
 ```
 
-Input:
+# Compatible clients
 
-```json
-{
-  "headline": "RBI unexpectedly raises repo rate by 50 bps"
-}
-```
+- ChatGPT
+- Claude
+- Gemini
+- Cursor
+- VS Code
+- Windsurf
+- Antigravity
+- Cline
+- Other MCP-compatible IDEs and agent runtimes
 
-Output shape:
+# Links
 
-```json
-{
-  "sector_vector": {
-    "Information Technology": 0.18,
-    "Realty": -0.52,
-    "Financial Services": -0.31
-  }
-}
-```
-
-The full managed API response contains richer audit fields. The MCP wrapper is
-kept compact for lightweight agent workflows.
-
-## API Key
-
-Production usage requires model-scoped API access:
-
-https://dashboard.aiondashboard.site/subscribe/indian-market-intelligence
-
-Set the key before running the MCP server:
-
-```bash
-export AION_API_KEY="YOUR_AION_API_KEY"
-```
-
-## Links
-
-- Dashboard model page: https://dashboard.aiondashboard.site/models/indian-market-intelligence
-- Subscription/API access: https://dashboard.aiondashboard.site/subscribe/indian-market-intelligence
-- PyPI package: https://pypi.org/project/aion-indian-market-intelligence/
-- Hugging Face model card: https://huggingface.co/AION-Analytics/aion-indian-market-intelligence
-- Hugging Face demo Space: https://huggingface.co/spaces/AION-Analytics/aion-indian-market-intelligence
-- Canonical GitHub repo: https://github.com/AION-Analytics/aion-indian-market-intelligence
-
-## Not Investment Advice
-
-This is market-interpretation infrastructure for developers, researchers, and
-agent builders. It does not provide investment advice, guaranteed market
-prediction, portfolio allocation, or trade execution.
+- Model surface: [AION Indian Market Intelligence](https://huggingface.co/AION-Analytics/aion-indian-market-intelligence)
+- MCP PyPI package: [aion-indian-market-intelligence-mcp](https://pypi.org/project/aion-indian-market-intelligence-mcp/)
+- Python client package: [aion-indian-market-intelligence](https://pypi.org/project/aion-indian-market-intelligence/)
+- Live demo: [HuggingFace Space](https://huggingface.co/spaces/AION-Analytics/aion-indian-market-intelligence)
+- API access page: [dashboard.aiondashboard.site/access/register](https://dashboard.aiondashboard.site/access/register)
+- Documentation and MCP integration: [dashboard.aiondashboard.site/models/indian-market-intelligence](https://dashboard.aiondashboard.site/models/indian-market-intelligence)
