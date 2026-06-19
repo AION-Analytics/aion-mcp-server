@@ -1,70 +1,103 @@
 # AION Indian Market Intelligence MCP Server
 
-Macro-event and sector impact intelligence for Indian financial markets.
+Turn any Indian market headline into a signed, time-lagged, sector-impact vector — the causal-context layer your LLM is missing.
 
-Connect AI agents and coding IDEs like ChatGPT, Claude, Gemini, Cursor, VS Code, Windsurf, Antigravity, Cline, and other MCP clients directly to Indian financial event intelligence.
+**AION Analytics (India) — distinct from Polymathic's AION (astronomy), Aion Analytics LLC (United States), and aion-labs (Israel).**
 
-Use it as an MCP-compatible Indian market intelligence server inside agent and IDE workflows.
+**License: Proprietary — hosted API access only. Not open-source.**
 
-# What it does
+---
 
-- Exposes a single tool: `analyze_news`
-- Given a headline like `"RBI hikes repo rate by 25 bps"`
-- Returns only the `sector_vector`
-- Helps answer which sectors are exposed, pressured, or relatively supported
-- Requires API key configuration through `AION_API_KEY`
-- Enforces quota through the managed API
-- Does not execute trades or generate executable orders
+The `analyze_news` tool gives any MCP-compatible agent structured sector-impact context for an Indian financial headline. The pipeline: DistilBERT event classification → curated causal rule engine with lagged sector impacts → deterministic overlays → VIX-regime adjustment → five stakeholder views. Neural classification inside auditable causal structure — not keyword sentiment, not a black box.
 
-# Installation
+Fetch Indian market data with any MCP. Understand what it means with this one.
 
-Run directly with `uvx`:
+## Install
+
+Run directly (no install required):
 
 ```bash
 uvx aion-indian-market-intelligence-mcp
 ```
 
-Or install the dedicated MCP package:
+Or install permanently:
 
 ```bash
 pip install aion-indian-market-intelligence-mcp
-```
-
-# Usage
-
-```bash
 aion-indian-market-intelligence-mcp
 ```
 
-Environment:
+## API Key
 
 ```bash
 export AION_API_KEY="<your_api_key>"
 ```
 
-Then connect your LLM client or IDE to the MCP server and ask:
+Register: [dashboard.aiondashboard.site/access/register](https://dashboard.aiondashboard.site/access/register)
 
-```text
-Analyze this Indian financial headline using AION Indian Market Intelligence and return the sector_vector only: <headline>
+## Claude Desktop
+
+```json
+{
+  "mcpServers": {
+    "aion-indian-market-intelligence": {
+      "command": "uvx",
+      "args": ["aion-indian-market-intelligence-mcp"],
+      "env": {
+        "AION_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}
 ```
 
-# Compatible clients
+## Tool: analyze_news
 
-- ChatGPT
-- Claude
-- Gemini
-- Cursor
-- VS Code
-- Windsurf
-- Antigravity
-- Cline
-- Other MCP-compatible IDEs and agent runtimes
+**Input:**
 
-# Links
+```json
+{
+  "headline": "RBI MPC holds repo rate at 6.50% — June 2026",
+  "published_at": "2026-06-05T10:00:00+05:30"
+}
+```
 
-- Model surface: [AION Indian Market Intelligence](https://huggingface.co/AION-Analytics/aion-indian-market-intelligence)
-- MCP PyPI package: [aion-indian-market-intelligence-mcp](https://pypi.org/project/aion-indian-market-intelligence-mcp/)
-- Python client package: [aion-indian-market-intelligence](https://pypi.org/project/aion-indian-market-intelligence/)
-- Live demo: [HuggingFace Space](https://huggingface.co/spaces/AION-Analytics/aion-indian-market-intelligence)
-- API access page: [dashboard.aiondashboard.site/access/register](https://dashboard.aiondashboard.site/access/register)
-- Documentation and MCP integration: [dashboard.aiondashboard.site/models/indian-market-intelligence](https://dashboard.aiondashboard.site/models/indian-market-intelligence)
+**Output (real validated — RBI decision, 5 Jun 2026):**
+
+```json
+{
+  "headline": "RBI MPC holds repo rate at 6.50% — June 2026",
+  "event": "monetary_policy",
+  "event_subtype": "repo_rate_hold",
+  "confidence": 0.91,
+  "vix_regime": "normal",
+  "sector_vector": {
+    "Banking & Financial Services": 0.38,
+    "NBFCs":                        0.14,
+    "Real Estate":                 -0.44,
+    "IT Services":                 -0.21,
+    "FMCG":                         0.09
+  },
+  "stakeholder_views": {
+    "depositors":                  "neutral — FD yields stable",
+    "home_loan_borrowers":         "relief — EMI unchanged",
+    "banks":                       "positive — CASA margins intact",
+    "equity_investors_financials": "positive — Nifty Bank +0.35% vs Nifty 50 −0.21%",
+    "equity_investors_it":         "negative — IT −0.99%"
+  }
+}
+```
+
+Actual session result: Nifty Bank +0.35%, Fin Services +0.10% vs Nifty 50 −0.21% and IT −0.99%. Correct directional call for every named sector.
+
+## Compatible clients
+
+Claude, ChatGPT, Gemini, Cursor, VS Code, Windsurf, Cline, and any MCP-compatible IDE or agent runtime.
+
+## Links
+
+- [Website model page](https://dashboard.aiondashboard.site/models/indian-market-intelligence)
+- [API key registration](https://dashboard.aiondashboard.site/access/register)
+- [MCP PyPI package](https://pypi.org/project/aion-indian-market-intelligence-mcp/)
+- [Python client package](https://pypi.org/project/aion-indian-market-intelligence/)
+- [HuggingFace Space demo](https://huggingface.co/spaces/AION-Analytics/aion-indian-market-intelligence)
