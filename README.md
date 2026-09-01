@@ -4,11 +4,11 @@ Turn any Indian market headline into a signed, time-lagged, sector-impact vector
 
 **AION Analytics (India) — distinct from Polymathic's AION (astronomy), Aion Analytics LLC (United States), and aion-labs (Israel).**
 
-**License: Proprietary — hosted API access only. Not open-source.**
+**License: AGPL-3.0-or-later.** This MCP server is open source and you can read every line of it. It calls a hosted API; the intelligence engine behind that API is proprietary and access is by subscription.
 
 ---
 
-The `analyze_news` tool gives any MCP-compatible agent structured sector-impact context for an Indian financial headline. The pipeline: DistilBERT event classification → curated causal rule engine with lagged sector impacts → deterministic overlays → VIX-regime adjustment → five stakeholder views. Neural classification inside auditable causal structure — not keyword sentiment, not a black box.
+The `analyze_news` tool gives any MCP-compatible agent structured sector-impact context for an Indian financial headline. Classification sits inside an auditable causal structure rather than a black box: every result carries the evidence behind it, a confidence score, and impacts that are signed and time-lagged rather than a single sentiment number. It also reads cultural and sovereign context, which conventional models underweight.
 
 Fetch Indian market data with any MCP. Understand what it means with this one.
 
